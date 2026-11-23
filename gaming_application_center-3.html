@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b16">
+<title>Gaming Application Center</title>
+<style>
+:root{--bg:#080b16;--panel:#101629;--panel2:#151e35;--line:#263354;--text:#f4f7ff;--muted:#9aa8c7;--blue:#48d66d;--cyan:#a4ff68;--purple:#1fae65;--green:#42e6a4;--red:#ff617c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#123b28 0,transparent 42%),radial-gradient(ellipse at 90% 15%,#153d2b 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.wrap{width:min(1100px,calc(100% - 32px));margin:auto}.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}.brand{display:flex;gap:11px;align-items:center;font-weight:900;letter-spacing:1.2px}.logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#8cff57,#16a34a);display:grid;place-items:center;box-shadow:0 0 24px #6b72ff66}.logo span{font-size:20px}.nav{display:flex;gap:9px}.btn{border:1px solid var(--line);color:var(--text);background:#151e35;padding:12px 17px;border-radius:12px;font-weight:750;transition:.2s}.btn:hover{transform:translateY(-2px);border-color:var(--cyan);box-shadow:0 0 20px #35d8ff22}.primary{border:0;background:linear-gradient(100deg,#4bd66b,#159447);box-shadow:0 8px 28px #37d66d45}.danger{background:#3a1928;border-color:#773047;color:#ffb3c1}.success{background:#12382f;border-color:#236d58;color:#8dffd2}
+.hero{padding:72px 0 58px;text-align:center}.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #33456d;background:#111b32;color:#a9c6ff;border-radius:999px;padding:8px 13px;font-size:12px;font-weight:800;letter-spacing:1.3px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}h1{font-size:clamp(38px,7vw,72px);line-height:1.02;margin:24px auto 17px;max-width:850px;letter-spacing:-2px}.gradient{background:linear-gradient(90deg,#fff,#a6ff8a 48%,#37d66d);color:transparent;background-clip:text}.lead{color:var(--muted);font-size:17px;line-height:1.7;max-width:650px;margin:0 auto 28px}.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.hero-actions .btn{padding:15px 22px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:25px 0 70px}.feature,.panel{background:linear-gradient(145deg,#121b31ee,#0d1425ee);border:1px solid var(--line);border-radius:18px;padding:20px}.feature .ico{font-size:24px}.feature h3{margin:12px 0 7px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}.footer{border-top:1px solid #202b45;color:#71809f;padding:22px 0;text-align:center;font-size:12px}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:20px;align-items:start}.site-sidebar{position:sticky;top:14px;display:flex;flex-direction:column;gap:8px;padding:14px;background:#0d1727;border:1px solid #244331;border-radius:18px}.side-label{font-size:10px;letter-spacing:1.5px;color:#779b83;font-weight:900;padding:8px 10px 3px}.side-link{width:100%;text-align:left;display:flex;gap:10px;align-items:center;padding:12px;border-radius:11px;background:transparent;border:1px solid transparent;color:#cbd8d0;font-weight:750}.side-link:hover,.side-link.active{background:#173522;border-color:#326b42;color:#b7ffbf}.side-link .nav-ico{width:22px;text-align:center}.connect-btn{border:1px solid #5865f2;background:#5865f2;color:white}.server-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.server-card{background:#0c1728;border:1px solid #294333;border-radius:16px;padding:18px}.server-icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#183a25;font-size:24px;margin-bottom:12px}.server-card p{color:var(--muted);line-height:1.55;font-size:14px}.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.plan{background:#0d1928;border:1px solid #2b4937;border-radius:15px;padding:18px}.plan h3{margin:8px 0}.plan .price{font-size:25px;font-weight:900;color:#a4ff68}.view{display:none;padding:35px 0 65px}.view.active{display:block}.section-head{margin-bottom:22px}.section-head h2{font-size:30px;margin:0 0 7px}.section-head p{color:var(--muted);margin:0}.form-card{max-width:760px;margin:auto}.progress-top{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:10px}.progress{height:8px;background:#202b45;border-radius:20px;overflow:hidden;margin-bottom:24px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:.25s}.field{margin:18px 0}.field label{display:block;font-weight:750;margin-bottom:9px}.field small{display:block;color:var(--muted);margin-top:6px}.control{width:100%;padding:13px 14px;border-radius:11px;border:1px solid #344365;background:#0b1222;color:var(--text);outline:none}.control:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #35d8ff18}.choice{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid #2a3858;border-radius:10px;margin:8px 0;background:#0c1426}.actions{display:flex;justify-content:space-between;gap:10px;margin-top:24px;flex-wrap:wrap}.admin-grid{display:grid;grid-template-columns:230px 1fr;gap:16px}.side{display:flex;flex-direction:column;gap:8px}.side button{text-align:left}.side button.selected{border-color:var(--cyan);background:#172947}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}.stat strong{font-size:28px;display:block}.stat span{color:var(--muted);font-size:13px}.question-row,.application-row{border:1px solid var(--line);background:#0c1426;border-radius:12px;padding:14px;margin:10px 0}.rowtop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.rowtop p{margin:5px 0;color:var(--muted);font-size:13px}.row-actions{display:flex;gap:7px;flex-wrap:wrap}.row-actions .btn{padding:8px 10px;font-size:12px}.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.admin-form .full{grid-column:1/-1}.muted{color:var(--muted)}.empty{text-align:center;padding:35px;color:var(--muted)}.notice{border:1px solid #335c58;background:#102923;color:#a6ffe0;padding:13px;border-radius:12px;line-height:1.5;margin:12px 0}.warning{border-color:#66512b;background:#2a2112;color:#ffe0a0}.hidden{display:none!important}.modal-back{position:fixed;inset:0;background:#030611cc;display:none;place-items:center;padding:18px;z-index:10}.modal-back.show{display:grid}.modal{width:min(520px,100%);background:#111a2e;border:1px solid #35466c;border-radius:18px;padding:22px;box-shadow:0 20px 80px #0009}.modal h3{margin-top:0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17243c;border:1px solid #3d527b;padding:12px 18px;border-radius:12px;display:none;z-index:20}.toast.show{display:block}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.site-sidebar{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.side-label{grid-column:1/-1}.side-link{font-size:12px;padding:10px}.server-grid,.plan-grid{grid-template-columns:1fr}}
+@media(max-width:720px){.features{grid-template-columns:1fr}.admin-grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:repeat(3,1fr)}.side button{text-align:center;padding:10px 5px;font-size:12px}.stat-grid{grid-template-columns:1fr 1fr}.admin-form{grid-template-columns:1fr}.admin-form .full{grid-column:auto}.hero{padding:48px 0 35px}.top{align-items:flex-start}.brand{font-size:13px}.nav .btn{padding:10px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><div class="logo"><span style="font-weight:1000;letter-spacing:-2px;font-size:16px">NOOB</span></div><span id="brandName">NOOBGAME • RECRUITMENT</span></div>
+ <div class="nav"><button class="btn connect-btn" onclick="connectDiscord()">Connect Discord</button><button class="btn" onclick="openAdminLogin()">Admin</button></div>
+</header>
+<div class="layout">
+<aside class="site-sidebar">
+ <div class="side-label">NOOBGAME MENU</div>
+ <button class="side-link active" data-page="home" onclick="navigatePage('home')"><span class="nav-ico">⌂</span> Home</button>
+ <button class="side-link" data-page="application" onclick="navigatePage('application')"><span class="nav-ico">✦</span> Creator Application</button>
+ <button class="side-link" data-page="discord" onclick="navigatePage('discord')"><span class="nav-ico">◉</span> Discord Servers</button>
+ <button class="side-link" data-page="bot-hosting" onclick="navigatePage('bot-hosting')"><span class="nav-ico">⌘</span> Bot Hosting</button>
+ <div class="side-label">ACCOUNT</div>
+ <button class="side-link" onclick="connectDiscord()"><span class="nav-ico">♧</span> Connect Discord</button>
+</aside>
+<main>
+<section id="home" class="view active">
+ <div class="hero">
+  <div class="tag"><span class="dot"></span> NOOBGAME CREATOR PROGRAM</div>
+  <h1 id="welcomeTitle">BECOME A <span class="gradient">NOOBGAME CREATOR.</span></h1>
+  <p class="lead" id="welcomeMessage">Do you create content about NoobGame? Apply to become an official creator and grow with our gaming community.</p>
+  <div class="hero-actions"><button class="btn primary" onclick="startApplication()">Creator Application&nbsp; →</button><button class="btn" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Learn More</button></div>
+ </div>
+ <div class="features" id="features">
+  <div class="feature"><div class="ico">⚡</div><h3>Creator application</h3><p>Tell us about your channel, your content and your creator experience.</p></div>
+  <div class="feature"><div class="ico">🎮</div><h3>Create with NoobGame</h3><p>Share your creativity and help more players discover NoobGame.</p></div>
+  <div class="feature"><div class="ico">🛡️</div><h3>Creator team review</h3><p>The NoobGame team will review your creator application.</p></div>
+ </div>
+</section>
+
+<section id="application" class="view">
+ <div class="form-card panel">
+  <div class="section-head"><h2>Creator Application Form</h2><p>Tell us about your content and your creator activity.</p></div>
+  <div class="progress-top"><span id="stepLabel">Question 1</span><span id="progressText">0%</span></div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <div id="questionArea"></div>
+  <div class="actions"><button class="btn" id="prevBtn" onclick="previousQuestion()">← Back</button><button class="btn primary" id="nextBtn" onclick="nextQuestion()">Next →</button></div>
+ </div>
+</section>
+
+<section id="success" class="view">
+ <div class="panel" style="max-width:650px;margin:45px auto;text-align:center;padding:40px 24px">
+  <div style="font-size:52px">✦</div><h2>Application submitted!</h2><p class="muted">Thank you for applying to the NoobGame Creator Program! Your answers have been saved in this browser.</p><button class="btn primary" onclick="showView('home')">Back to Home</button>
+ </div>
+</section>
+
+<section id="admin" class="view">
+ <div class="section-head"><h2>Admin Dashboard</h2><p>Manage creator application questions and review submissions.</p></div>
+ <div class="admin-grid">
+  <div class="side">
+   <button class="btn selected" data-tab="overview" onclick="adminTab('overview')">📊 Overview</button>
+   <button class="btn" data-tab="questions" onclick="adminTab('questions')">❔ Questions</button>
+   <button class="btn" data-tab="applications" onclick="adminTab('applications')">📨 Applications</button>
+   <button class="btn" data-tab="hosting" onclick="adminTab('hosting')">⌘ Hosting</button>
+   <button class="btn" data-tab="settings" onclick="adminTab('settings')">⚙️ Settings</button>
+   <button class="btn danger" onclick="adminLogout()">Log out</button>
+  </div>
+  <div class="panel" id="adminContent"></div>
+ </div>
+ <p class="muted" style="font-size:12px;margin-top:16px">Demo storage: data is saved only in this browser on this device. It is not a secure multi-user website.</p>
+</section>
+
+<section id="discord" class="view">
+ <div class="section-head"><h2>Discord Servers</h2><p>Choose a community to discover. You will see its details before opening its Discord invite.</p></div>
+ <div class="notice">Selecting a server does not join it automatically. Open the server page first, then choose whether to follow its invite.</div>
+ <div class="server-grid" id="serverGrid"></div>
+</section>
+<section id="server-detail" class="view">
+ <button class="btn" onclick="navigatePage('discord')">← Back to servers</button>
+ <div class="panel" style="max-width:720px;margin:18px auto" id="serverDetailContent"></div>
+</section>
+<section id="bot-hosting" class="view">
+ <div class="section-head"><h2>NoobGame Bot Hosting</h2><p>Hosting options for your Discord bot, with a simple request form.</p></div>
+ <div class="notice warning">Hosting requests in this demo are saved only in this browser. No bot is deployed or charged automatically.</div>
+ <div class="plan-grid">
+  <div class="plan"><div class="tag">STARTER</div><h3>Starter Hosting</h3><div class="price">Custom</div><p class="muted">For small personal Discord bots and test projects.</p><button class="btn primary" onclick="chooseHosting('Starter')">Request Starter</button></div>
+  <div class="plan"><div class="tag">POPULAR</div><h3>Community Hosting</h3><div class="price">Custom</div><p class="muted">For active community bots and everyday automation.</p><button class="btn primary" onclick="chooseHosting('Community')">Request Community</button></div>
+  <div class="plan"><div class="tag">ADVANCED</div><h3>Advanced Hosting</h3><div class="price">Custom</div><p class="muted">For larger bots with more demanding workloads.</p><button class="btn primary" onclick="chooseHosting('Advanced')">Request Advanced</button></div>
+ </div>
+ <div class="panel" style="max-width:760px;margin:22px auto"><h3>Hosting request</h3><div class="field"><label>Discord username</label><input class="control" id="hostDiscord" placeholder="username"></div><div class="field"><label>Bot name</label><input class="control" id="hostBotName" placeholder="Your bot name"></div><div class="field"><label>Hosting plan</label><select class="control" id="hostPlan"><option>Starter</option><option>Community</option><option>Advanced</option></select></div><div class="field"><label>Project details</label><textarea class="control" id="hostDetails" rows="4" placeholder="Tell us what your bot does..."></textarea></div><button class="btn primary" onclick="submitHostingRequest()">Send hosting request</button></div>
+</section>
+<section id="discord-callback" class="view"><div class="panel" style="max-width:700px;margin:25px auto"><h2>Discord authorization</h2><p id="oauthMessage" class="muted">Checking Discord authorization...</p><div class="notice warning">For security, the authorization code must be exchanged on a server using your Discord client secret. Never put your client secret in this HTML file.</div><button class="btn" onclick="navigatePage('home')">Back to home</button></div></section>
+</main>
+</div>
+<footer class="footer">© <span id="year"></span> <span id="footerName">NOOBGAME • RECRUITMENT</span> • CREATOR APPLICATIONS</footer>
+</div>
+
+<div class="modal-back" id="loginModal">
+ <div class="modal"><h3>Admin access</h3><p class="muted">Enter the local demo password to open the dashboard.</p><input class="control" id="adminPassword" type="password" placeholder="NoobGame admin password" onkeydown="if(event.key==='Enter')loginAdmin()"><p class="muted" style="font-size:12px">Default demo password: <b>admin123</b>. Change it in the Settings tab. This is not secure authentication.</p><div class="actions"><button class="btn" onclick="closeLogin()">Cancel</button><button class="btn primary" onclick="loginAdmin()">Continue</button></div></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DEFAULT_QUESTIONS = [
+ {id:1,title:"What is your Discord username?",type:"text",required:true,options:[]},
+ {id:2,title:"What is your Roblox username?",type:"text",required:true,options:[]},
+ {id:3,title:"Which platform do you create content on?",type:"radio",required:true,options:["YouTube","TikTok","Twitch","Other"]},
+ {id:4,title:"Share a link to your channel or profile.",type:"text",required:true,options:[]},
+ {id:5,title:"How often do you publish NoobGame content?",type:"textarea",required:true,options:[]},
+ {id:6,title:"What is your average number of views per video?",type:"number",required:true,options:[]},
+ {id:7,title:"Have you created content about NoobGame before?",type:"radio",required:true,options:["Yes","No"]},
+ {id:8,title:"Why would you like to join the NoobGame Creator Program?",type:"textarea",required:true,options:[]},
+ {id:9,title:"What are your future content ideas for NoobGame?",type:"textarea",required:true,options:[]},
+ {id:10,title:"Anything else you would like us to know?",type:"textarea",required:false,options:[]}
+];
+const get=(k,f)=>{try{let v=localStorage.getItem(k);return v===null?f:JSON.parse(v)}catch{return f}};
+const set=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+let questions=get("noobgame_creator_questions",DEFAULT_QUESTIONS), submissions=get("noobgame_creator_submissions",[]),
+ settings=get("noobgame_creator_settings",{brand:"NOOBGAME • RECRUITMENT",title:"JOIN THE NOOBGAME TEAM.",message:"Do you create content about NoobGame? Apply to become an official creator and grow with our gaming community.",password:"admin123",discordClientId:"",discordRedirectUri:""}),
+ answers={},current=0,adminUnlocked=false,editingId=null;
+function persist(){set("noobgame_creator_questions",questions);set("noobgame_creator_submissions",submissions);set("noobgame_creator_settings",settings)}
+function applySettings(){document.getElementById("brandName").textContent=settings.brand;document.getElementById("footerName").textContent=settings.brand;document.getElementById("welcomeTitle").textContent=settings.title;document.getElementById("welcomeMessage").textContent=settings.message;document.title=settings.brand+" | Applications"}
+function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+function navigatePage(id){if(id==='application'){startApplication();return}showView(id);document.querySelectorAll('.side-link[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='discord')renderServers();}
+const discordServers=[
+ {id:'community',name:'NoobGame Community',icon:'🎮',description:'Meet other players, chat with the community, share your moments and get the latest community updates.',features:['Community chat','Announcements','Events and activities'],invite:''},
+ {id:'support',name:'NoobGame Support',icon:'🛟',description:'A place to get help, ask questions and contact the support team about NoobGame.',features:['Player support','Questions and help','Report an issue'],invite:''}
+];
+function renderServers(){document.getElementById('serverGrid').innerHTML=discordServers.map(s=>`<article class="server-card"><div class="server-icon">${s.icon}</div><h3>${s.name}</h3><p>${s.description}</p><button class="btn primary" onclick="openServerDetail('${s.id}')">View server details →</button></article>`).join('')}
+function openServerDetail(id){let s=discordServers.find(x=>x.id===id);if(!s)return;document.getElementById('serverDetailContent').innerHTML=`<div class="server-icon">${s.icon}</div><h2>${s.name}</h2><p class="muted">${s.description}</p><h3>What you can find here</h3><ul>${s.features.map(x=>`<li style="margin:9px 0;color:#cbd8d0">${x}</li>`).join('')}</ul><div class="notice">You are viewing the server information page. You will not join automatically.</div>${s.invite?`<button class="btn primary" onclick="window.open('${s.invite}','_blank','noopener')">Open Discord invite ↗</button>`:'<p class="muted">The official invite link will be added here by the NoobGame team.</p>'}`;showView('server-detail');document.querySelectorAll('.side-link[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page==='discord'))}
+function chooseHosting(plan){document.getElementById('hostPlan').value=plan;document.getElementById('hostPlan').scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('hostDiscord').focus()}
+function submitHostingRequest(){let d=document.getElementById('hostDiscord').value.trim(),b=document.getElementById('hostBotName').value.trim(),p=document.getElementById('hostPlan').value,details=document.getElementById('hostDetails').value.trim();if(!d||!b){toast('Please enter your Discord username and bot name.');return}let list=get('noobgame_hosting_requests',[]);list.unshift({id:Date.now(),date:new Date().toLocaleString(),discord:d,bot:b,plan:p,details});set('noobgame_hosting_requests',list);toast('Hosting request saved in this browser.');document.getElementById('hostDiscord').value='';document.getElementById('hostBotName').value='';document.getElementById('hostDetails').value=''}
+function connectDiscord(){if(!settings.discordClientId){toast('Discord OAuth is not configured yet. Ask the site administrator to add the Client ID in Admin → Settings.');openAdminLogin();return}let redirect=settings.discordRedirectUri||location.origin+location.pathname;let state=crypto.randomUUID?crypto.randomUUID():String(Date.now());sessionStorage.setItem('noobgame_oauth_state',state);let url='https://discord.com/oauth2/authorize?'+new URLSearchParams({client_id:settings.discordClientId,redirect_uri:redirect,response_type:'code',scope:'identify',state});location.href=url}
+function checkDiscordCallback(){let params=new URLSearchParams(location.search),code=params.get('code'),state=params.get('state'),err=params.get('error');if(code||err){showView('discord-callback');let valid=state===sessionStorage.getItem('noobgame_oauth_state');document.getElementById('oauthMessage').textContent=err?'Discord authorization was cancelled or denied.':valid?'Discord approved the authorization. The code has reached this page, but a secure backend is still required to exchange it and retrieve your Discord profile. No account is marked as connected yet.':'The authorization state could not be verified. Please restart Discord connection.';history.replaceState({},document.title,location.pathname)}}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
+function startApplication(){if(!questions.length){toast("The application form has no questions yet.");return}answers={};current=0;renderQuestion();showView("application")}
+function renderQuestion(){
+ const q=questions[current],area=document.getElementById("questionArea");let value=answers[q.id]||"";
+ document.getElementById("stepLabel").textContent=`Question ${current+1} of ${questions.length}`;
+ let pct=Math.round((current/questions.length)*100);document.getElementById("progressText").textContent=pct+"%";document.getElementById("progressBar").style.width=pct+"%";
+ let req=q.required?'<span style="color:var(--red)">*</span>':'<span class="muted">(optional)</span>';
+ let input="";
+ if(q.type==="textarea")input=`<textarea class="control" rows="5" id="answerInput" placeholder="Write your answer...">${escapeHtml(value)}</textarea>`;
+ else if(q.type==="radio"||q.type==="select"){if(q.type==="select")input=`<select class="control" id="answerInput"><option value="">Choose an option</option>${q.options.map(o=>`<option ${value===o?'selected':''}>${escapeHtml(o)}</option>`).join("")}</select>`;else input=q.options.map(o=>`<label class="choice"><input type="radio" name="answer" value="${escapeAttr(o)}" ${value===o?'checked':''}> ${escapeHtml(o)}</label>`).join("")}
+ else input=`<input class="control" id="answerInput" type="${q.type==="number"?"number":"text"}" value="${escapeAttr(value)}" placeholder="Your answer...">`;
+ area.innerHTML=`<div class="field"><label>${escapeHtml(q.title)} ${req}</label>${input}</div>`;
+ document.getElementById("prevBtn").style.visibility=current===0?"hidden":"visible";
+ document.getElementById("nextBtn").textContent=current===questions.length-1?"Submit Application ✓":"Next →";
+}
+function readAnswer(){let q=questions[current],el=document.getElementById("answerInput");if(q.type==="radio"){let checked=document.querySelector('input[name="answer"]:checked');return checked?checked.value:""}return el?el.value.trim():""}
+function nextQuestion(){let q=questions[current],v=readAnswer();if(q.required&&!v){toast("Please answer this question before continuing.");return}answers[q.id]=v;if(current<questions.length-1){current++;renderQuestion()}else submitApplication()}
+function previousQuestion(){if(current>0){answers[questions[current].id]=readAnswer();current--;renderQuestion()}}
+function submitApplication(){submissions.unshift({id:Date.now(),date:new Date().toLocaleString(),answers:questions.map(q=>({question:q.title,answer:answers[q.id]||"(no answer)"}))});persist();showView("success")}
+function openAdminLogin(){if(adminUnlocked){showView("admin");renderAdmin();return}document.getElementById("loginModal").classList.add("show");document.getElementById("adminPassword").value=""}
+function closeLogin(){document.getElementById("loginModal").classList.remove("show")}
+function loginAdmin(){if(document.getElementById("adminPassword").value===settings.password){adminUnlocked=true;closeLogin();showView("admin");renderAdmin()}else toast("Incorrect password.")}
+function adminLogout(){adminUnlocked=false;showView("home")}
+function adminTab(tab){document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("selected",b.dataset.tab===tab));renderAdmin(tab)}
+function renderAdmin(tab="overview"){if(!adminUnlocked)return;let c=document.getElementById("adminContent");
+ if(tab==="overview"){c.innerHTML=`<h3>Dashboard overview</h3><div class="stat-grid"><div class="feature stat"><strong>${submissions.length}</strong><span>Total applications</span></div><div class="feature stat"><strong>${questions.length}</strong><span>Form questions</span></div><div class="feature stat"><strong>●</strong><span>Form status: active</span></div></div><div class="notice warning">Important: this standalone demo stores applications only in this browser. Visitors using other devices will not send applications to your admin panel. A backend/database is needed for a public recruitment website.</div><button class="btn primary" onclick="adminTab('questions')">Manage questions →</button>`}
+ if(tab==="questions"){c.innerHTML=`<div class="rowtop"><div><h3>Form questions</h3><p class="muted">Add and customize the questions applicants see.</p></div><button class="btn primary" onclick="questionEditor()">+ Add</button></div><div id="questionList">${questions.map(q=>`<div class="question-row"><div class="rowtop"><div><b>${escapeHtml(q.title)}</b><p>${q.type.toUpperCase()} • ${q.required?"Required":"Optional"}</p></div><div class="row-actions"><button class="btn" onclick="questionEditor(${q.id})">Edit</button><button class="btn danger" onclick="deleteQuestion(${q.id})">Delete</button></div></div></div>`).join("")||'<div class="empty">No questions yet. Add your first question.</div>'}</div><div id="questionEditor"></div>`}
+ if(tab==="applications"){c.innerHTML=`<h3>Received applications</h3><p class="muted">Applications saved in this browser.</p>${submissions.map((s,i)=>`<div class="application-row"><div class="rowtop"><div><b>Application #${submissions.length-i}</b><p>${escapeHtml(s.date)}</p></div><div class="row-actions"><button class="btn" onclick="viewSubmission(${s.id})">View</button><button class="btn danger" onclick="deleteSubmission(${s.id})">Delete</button></div></div><div id="submission-${s.id}" class="hidden"></div></div>`).join("")||'<div class="empty">No applications have been submitted yet.</div>'}<button class="btn" onclick="exportApplications()">Export applications (CSV)</button>`}
+ if(tab==="hosting"){let reqs=get("noobgame_hosting_requests",[]);c.innerHTML=`<h3>Bot hosting requests</h3><p class="muted">Requests submitted from the hosting page on this browser.</p>${reqs.map((r,i)=>`<div class="application-row"><b>${escapeHtml(r.bot)} — ${escapeHtml(r.plan)}</b><p>${escapeHtml(r.discord)} • ${escapeHtml(r.date)}</p><p class="muted">${escapeHtml(r.details)}</p></div>`).join("")||"<div class='empty'>No hosting requests yet.</div>"}`;}
+ if(tab==="settings"){c.innerHTML=`<h3>Website settings</h3><div class="field"><label>Brand / website name</label><input class="control" id="setBrand" value="${escapeAttr(settings.brand)}"></div><div class="field"><label>Welcome title</label><input class="control" id="setTitle" value="${escapeAttr(settings.title)}"></div><div class="field"><label>Welcome message</label><textarea class="control" id="setMessage" rows="4">${escapeHtml(settings.message)}</textarea></div><div class="field"><label>NoobGame Community Discord invite URL</label><input class="control" id="setCommunityInvite" value="${escapeAttr(discordServers.find(x=>x.id==='community').invite)}" placeholder="https://discord.gg/..."></div><div class="field"><label>NoobGame Support Discord invite URL</label><input class="control" id="setSupportInvite" value="${escapeAttr(discordServers.find(x=>x.id==='support').invite)}" placeholder="https://discord.gg/..."></div><div class="field"><label>Discord OAuth Client ID</label><input class="control" id="setDiscordClientId" value="${escapeAttr(settings.discordClientId||'')}" placeholder="Discord application client ID"></div><div class="field"><label>Discord OAuth Redirect URI</label><input class="control" id="setDiscordRedirectUri" value="${escapeAttr(settings.discordRedirectUri||'')}" placeholder="https://your-domain.com/callback"></div><div class="notice warning">Discord login requires a Discord Developer Application and a secure backend to exchange the OAuth code. Never enter your Client Secret here.</div><div class="field"><label>New admin demo password</label><input class="control" id="setPassword" type="password" placeholder="Enter a new password"></div><button class="btn primary" onclick="saveSettings()">Save settings</button><div class="notice warning">The admin password is stored in browser storage and is not secure. Do not use this demo to protect real private information.</div>`}
+}
+function questionEditor(id){editingId=id||null;let q=id?questions.find(x=>x.id===id):{title:"",type:"text",required:true,options:[]};let box=document.getElementById("questionEditor");box.innerHTML=`<div class="question-row"><h3>${id?"Edit question":"New question"}</h3><div class="field"><label>Question text</label><input class="control" id="qTitle" value="${escapeAttr(q.title)}"></div><div class="admin-form"><div class="field"><label>Answer type</label><select class="control" id="qType" onchange="toggleOptions()"><option value="text">Short text</option><option value="textarea">Long text</option><option value="number">Number</option><option value="radio">Multiple choice</option><option value="select">Dropdown</option></select></div><div class="field"><label>Required?</label><select class="control" id="qRequired"><option value="true">Yes</option><option value="false">No</option></select></div><div class="field full hidden" id="optionsWrap"><label>Choices (one per line)</label><textarea class="control" id="qOptions" rows="4">${escapeHtml((q.options||[]).join("\n"))}</textarea></div></div><div class="actions"><button class="btn" onclick="document.getElementById('questionEditor').innerHTML=''">Cancel</button><button class="btn primary" onclick="saveQuestion()">Save question</button></div></div>`;document.getElementById("qType").value=q.type;document.getElementById("qRequired").value=String(q.required);toggleOptions()}
+function toggleOptions(){let t=document.getElementById("qType").value;document.getElementById("optionsWrap").classList.toggle("hidden",!(t==="radio"||t==="select"))}
+function saveQuestion(){let title=document.getElementById("qTitle").value.trim(),type=document.getElementById("qType").value,required=document.getElementById("qRequired").value==="true",options=(document.getElementById("qOptions")?.value||"").split("\n").map(x=>x.trim()).filter(Boolean);if(!title){toast("Enter a question.");return}if((type==="radio"||type==="select")&&options.length<2){toast("Add at least two choices.");return}let q={id:editingId||Date.now(),title,type,required,options};if(editingId)questions=questions.map(x=>x.id===editingId?q:x);else questions.push(q);persist();renderAdmin("questions");toast("Question saved.")}
+function deleteQuestion(id){if(!confirm("Delete this question?"))return;questions=questions.filter(q=>q.id!==id);persist();renderAdmin("questions")}
+function saveSettings(){settings.brand=document.getElementById("setBrand").value.trim()||"APPLICATION CENTER";settings.title=document.getElementById("setTitle").value.trim()||"YOUR NEXT LEVEL STARTS HERE.";settings.message=document.getElementById("setMessage").value.trim();discordServers.find(x=>x.id==='community').invite=document.getElementById("setCommunityInvite").value.trim();discordServers.find(x=>x.id==='support').invite=document.getElementById("setSupportInvite").value.trim();settings.discordClientId=document.getElementById("setDiscordClientId").value.trim();settings.discordRedirectUri=document.getElementById("setDiscordRedirectUri").value.trim();let p=document.getElementById("setPassword").value;if(p)settings.password=p;persist();applySettings();renderAdmin("settings");toast("Settings saved.")}
+function viewSubmission(id){let s=submissions.find(x=>x.id===id),el=document.getElementById("submission-"+id);el.classList.toggle("hidden");el.innerHTML=s.answers.map(a=>`<div class="field"><b>${escapeHtml(a.question)}</b><p class="muted" style="white-space:pre-wrap">${escapeHtml(a.answer)}</p></div>`).join("")}
+function deleteSubmission(id){if(!confirm("Delete this application?"))return;submissions=submissions.filter(s=>s.id!==id);persist();renderAdmin("applications")}
+function exportApplications(){let rows=[["Date","Question","Answer"]];submissions.forEach(s=>s.answers.forEach(a=>rows.push([s.date,a.question,a.answer])));let csv=rows.map(r=>r.map(x=>'"'+String(x).replaceAll('"','""')+'"').join(",")).join("\n");let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="applications.csv";a.click();URL.revokeObjectURL(a.href)}
+function escapeHtml(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function escapeAttr(s){return escapeHtml(s)}
+document.getElementById("year").textContent=new Date().getFullYear();applySettings();renderServers();checkDiscordCallback();
+</script>
+</body>
+</html>
